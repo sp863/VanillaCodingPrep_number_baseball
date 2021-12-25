@@ -1,8 +1,11 @@
-export const gameData = {
-  answer: 0,
-  triesRemaining: 10,
-  strike: 0,
-  ball: 0,
+export const gameData = {};
+
+export const initGameData = function () {
+  gameData.answer = 0;
+  gameData.triesRemaining = 10;
+  gameData.strike = 0;
+  gameData.ball = 0;
+  gameData.playing = true;
 };
 
 export const isValidNumber = function (number) {

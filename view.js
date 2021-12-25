@@ -3,27 +3,38 @@ class GameView {
   #gameSection = document.getElementById("game-info-section");
   #playerSection = document.getElementById("player-control-section");
 
-  addGuessNumberHanlder(handler) {
+  addGameStartHandler() {
+    const btnStart = document.querySelector(".game-start-btn");
+    btnStart.addEventListener("click", function () {
+      document.querySelector(".start-page").classList.toggle("open");
+      document.querySelector(".game-page").classList.toggle("open");
+    });
+  }
+  addGuessNumberHanlder(handler, gameData) {
     const guessEnter = this.#playerSection.querySelector(".enter");
     guessEnter.addEventListener("click", function () {
       const guess = document.querySelector(".player-guess").value;
       if (!guess) return;
+      if (!gameData.playing) return;
       handler(guess);
     });
   }
 
   addRestartHandler(handler) {
-    document
-      .querySelector(".restart-btn")
-      .addEventListener("click", function () {
-        this.#gameSection.querySelector(".number").textContent = "?";
-      });
+    const restartBtn = this.#headerSection.querySelector(".restart-btn");
+    restartBtn.addEventListener("click", function () {
+      document.querySelector(".number").textContent = "?";
+      document.querySelector(".game-result-message").textContent = "";
+      document.querySelector(".game-page").classList.remove("three-strikes");
+      document.querySelector(".game-page").classList.remove("game-over");
+      handler();
+    });
   }
 
   updateTriesRemaining(tries) {
     this.#playerSection.querySelector(
       ".tries"
-    ).textContent = `남은 시도 : ${tries}회`;
+    ).textContent = `🥊 남은 시도 : ${tries}회`;
   }
 
   renderResult(gameData) {
@@ -35,10 +46,22 @@ class GameView {
     for (let i = 0; i < ball; i++) {
       this.insertBall();
     }
-    if (strike === 3) {
-      this.#gameSection.querySelector(".number").textContent = gameData.answer;
-    }
     this.#playerSection.querySelector(".player-guess").value = "";
+  }
+
+  renderThreeStrikes(gameData) {
+    this.#gameSection.querySelector(".number").textContent = gameData.answer;
+    this.#headerSection.querySelector(".game-result-message").textContent =
+      "⚾️ 3 Strikes!";
+    this.#playerSection.querySelector(".player-guess").value = "";
+    document.querySelector(".game-page").classList.add("three-strikes");
+  }
+
+  renderGameOver() {
+    this.#headerSection.querySelector(".game-result-message").textContent =
+      "😭 Game Over...";
+    this.#playerSection.querySelector(".player-guess").value = "";
+    document.querySelector(".game-page").classList.add("game-over");
   }
 
   insertStrike() {
@@ -61,6 +84,7 @@ class GameView {
     this.clearStrikeContainer();
     this.clearBallContainer();
   }
+
   clearStrikeContainer() {
     const strikeContainer = document.querySelector(".strike-container");
     strikeContainer.innerHTML = "";

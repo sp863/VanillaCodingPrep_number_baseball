@@ -2,6 +2,7 @@ import * as model from "./model.js";
 import gameView from "./view.js";
 
 const gameInit = function () {
+  model.initGameData();
   model.generateNumber(100, 1000);
   console.log(model.gameData.answer);
   gameView.updateTriesRemaining(model.gameData.triesRemaining);
@@ -21,11 +22,24 @@ const controlGame = function (guess) {
   gameView.renderResult(model.gameData);
   model.gameData.triesRemaining--;
   gameView.updateTriesRemaining(model.gameData.triesRemaining);
+  if (model.gameData.strike === 3) {
+    gameView.renderThreeStrikes(model.gameData);
+    model.gameData.playing = false;
+    return;
+  }
+  if (model.gameData.triesRemaining <= 0) {
+    gameView.renderGameOver();
+    model.gameData.playing = false;
+    return;
+  }
 };
+
 const restartGame = function () {
   gameInit();
+  gameView.clearResult();
 };
 
 gameInit();
-gameView.addGuessNumberHanlder(controlGame);
+gameView.addGameStartHandler();
+gameView.addGuessNumberHanlder(controlGame, model.gameData);
 gameView.addRestartHandler(restartGame);
