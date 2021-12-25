@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <script defer src="script.js"></script>
-    <title>Document</title>
+    <script type="module" defer src="controller.js"></script>
+    <title>Baseball-VanillaPrep</title>
   </head>
   <body>
     <div class="start-page">
@@ -35,9 +35,13 @@
       </div>
 
       <div id="player-control-section">
-        <input class="player-guess" />
-        <button class="throw btn">Throw!</button>
-        <div class="tries"></div>
+        <div class="left-control-container">
+          <input class="player-guess" />
+          <button class="throw btn">Throw!</button>
+        </div>
+        <div class="right-control-container">
+          <div class="tries"></div>
+        </div>
       </div>
     </div>
   </body>

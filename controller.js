@@ -4,32 +4,6 @@ const headerSection = document.getElementById("header-section");
 const gameSection = document.getElementById("game-info-section");
 const playerSection = document.getElementById("player-control-section");
 
-const generateNumber = function (min, max) {
-  while (true) {
-    const randomNum = Math.floor(Math.random() * (max - min) + min);
-    const number = randomNum + "";
-
-    if (isValidNumber(number)) {
-      return number;
-    }
-  }
-};
-
-const isValidNumber = function (number) {
-  const checkNumberSet = new Set();
-  for (const x of number) {
-    checkNumberSet.add(x);
-  }
-  const isNumber = Number(number);
-  const noDuplicate = checkNumberSet.size === 3;
-  const notContainZero = !number.includes("0");
-  if (isNumber && noDuplicate && notContainZero) return true;
-  return false;
-};
-
-const answer = generateNumber(100, 1000);
-console.log(answer);
-
 playerSection.querySelector(".throw").addEventListener("click", function () {
   const guess = playerSection.querySelector(".player-guess").value;
   if (!guess) return;
@@ -43,6 +17,36 @@ playerSection.querySelector(".throw").addEventListener("click", function () {
   compareNumber(guess);
 });
 
+headerSection.querySelector(".again").addEventListener("click", function () {});
+
+const isValidNumber = function (number) {
+  const checkNumberSet = new Set();
+  for (const x of number) {
+    checkNumberSet.add(x);
+  }
+  const isNumber = Number(number);
+  const noDuplicate = checkNumberSet.size === 3;
+  const notContainZero = !number.includes("0");
+  if (isNumber && noDuplicate && notContainZero) return true;
+  return false;
+};
+
+const generateNumber = function (min, max) {
+  while (true) {
+    const randomNum = Math.floor(Math.random() * (max - min) + min);
+    const number = randomNum + "";
+
+    if (isValidNumber(number)) {
+      return number;
+    }
+  }
+};
+
+const gameInit = function () {
+  const answer = generateNumber(100, 1000);
+  console.log(answer);
+};
+
 const compareNumber = function (number) {
   let strike = 0;
   let ball = 0;
@@ -55,6 +59,8 @@ const compareNumber = function (number) {
   }
   renderResult(strike, ball);
 };
+
+const controlGameResult = function (strike) {};
 
 const renderResult = function (strike, ball) {
   for (let i = 0; i < strike; i++) {
