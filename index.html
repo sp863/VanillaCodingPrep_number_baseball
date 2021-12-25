@@ -8,5 +8,37 @@
     <script defer src="script.js"></script>
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <div class="start-page">
+      <h1 class="start-page--title">Number Baseball</h1>
+      <button class="gamestart-btn">GAME START</button>
+      <p class="myInfo">Sejin Scott Park</p>
+      <p class="myInfo">sp863@cornell.edu</p>
+    </div>
+
+    <div class="game-page hidden">
+      <div id="header-section">
+        <button class="again-btn btn">Again</button>
+        <p class="instruction"></p>
+      </div>
+
+      <div id="game-info-section">
+        <div class="number">?</div>
+        <div class="strike-block">
+          <p class="strike">Strike</p>
+          <span class="strike-count count">O</span>
+        </div>
+        <div class="ball-block">
+          <p class="ball">Ball</p>
+          <span class="ball-count count">X</span>
+        </div>
+      </div>
+
+      <div id="player-control-section">
+        <input class="player-guess" />
+        <button class="throw-btn btn">Throw!</button>
+        <div class="tries"></div>
+      </div>
+    </div>
+  </body>
 </html>
