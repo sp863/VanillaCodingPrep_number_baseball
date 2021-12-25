@@ -4,6 +4,7 @@ import gameView from "./view.js";
 const gameInit = function () {
   model.generateNumber(100, 1000);
   console.log(model.gameData.answer);
+  gameView.updateTriesRemaining(model.gameData.triesRemaining);
 };
 
 const controlGame = function (guess) {
@@ -17,9 +18,14 @@ const controlGame = function (guess) {
   }
   gameView.clearResult();
   model.compareNumber(guess, answer);
-  gameView.renderResult(model.gameData.strike, model.gameData.ball);
+  gameView.renderResult(model.gameData);
+  model.gameData.triesRemaining--;
+  gameView.updateTriesRemaining(model.gameData.triesRemaining);
+};
+const restartGame = function () {
+  gameInit();
 };
 
 gameInit();
 gameView.addGuessNumberHanlder(controlGame);
-gameView.addAgainHandler();
+gameView.addRestartHandler(restartGame);

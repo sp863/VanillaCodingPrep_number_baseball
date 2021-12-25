@@ -4,7 +4,7 @@ class GameView {
   #playerSection = document.getElementById("player-control-section");
 
   addGuessNumberHanlder(handler) {
-    const guessEnter = this.#playerSection.querySelector(".throw");
+    const guessEnter = this.#playerSection.querySelector(".enter");
     guessEnter.addEventListener("click", function () {
       const guess = document.querySelector(".player-guess").value;
       if (!guess) return;
@@ -12,20 +12,32 @@ class GameView {
     });
   }
 
-  addAgainHandler(handler) {
-    this.#headerSection
-      .querySelector(".again")
-      .addEventListener("click", function () {});
+  addRestartHandler(handler) {
+    document
+      .querySelector(".restart-btn")
+      .addEventListener("click", function () {
+        this.#gameSection.querySelector(".number").textContent = "?";
+      });
   }
 
-  renderResult(strike, ball) {
+  updateTriesRemaining(tries) {
+    this.#playerSection.querySelector(
+      ".tries"
+    ).textContent = `남은 시도 : ${tries}회`;
+  }
+
+  renderResult(gameData) {
+    const strike = gameData.strike;
+    const ball = gameData.ball;
     for (let i = 0; i < strike; i++) {
       this.insertStrike();
     }
     for (let i = 0; i < ball; i++) {
       this.insertBall();
     }
-    this.#gameSection.querySelector();
+    if (strike === 3) {
+      this.#gameSection.querySelector(".number").textContent = gameData.answer;
+    }
     this.#playerSection.querySelector(".player-guess").value = "";
   }
 

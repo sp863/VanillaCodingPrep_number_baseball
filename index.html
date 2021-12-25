@@ -16,9 +16,19 @@
       <p class="myInfo">sp863@cornell.edu</p>
     </div>
 
-    <div class="game-page hidden">
+    <div class="game-over-page">
+      <h1 class="game-over-title">GAME OVER...</h1>
+      <button class="restart-btn">RESTART</button>
+    </div>
+
+    <div class="win-page">
+      <h1 class="win-title">Congratulations!</h1>
+      <button class="restart-btn">RESTART</button>
+    </div>
+
+    <div class="game-page">
       <div id="header-section">
-        <button class="again btn">Again</button>
+        <button class="restart-btn">RESTART</button>
         <p class="instruction"></p>
       </div>
 
@@ -37,10 +47,10 @@
       <div id="player-control-section">
         <div class="left-control-container">
           <input class="player-guess" />
-          <button class="throw btn">Throw!</button>
+          <button class="enter btn">Enter</button>
         </div>
         <div class="right-control-container">
-          <div class="tries"></div>
+          <p class="tries">남은 시도: 10회</p>
         </div>
       </div>
     </div>
