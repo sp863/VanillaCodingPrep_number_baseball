@@ -7,7 +7,7 @@ class GameView {
     const btnStart = document.querySelector(".game-start-btn");
     btnStart.addEventListener("click", function () {
       document.querySelector(".start-page").classList.toggle("open");
-      document.querySelector(".game-page").classList.toggle("open");
+      document.querySelector(".game-page-container").classList.toggle("open");
     });
   }
   addGuessNumberHanlder(handler, gameData) {
@@ -32,9 +32,7 @@ class GameView {
   }
 
   updateTriesRemaining(tries) {
-    this.#playerSection.querySelector(
-      ".tries"
-    ).textContent = `🥊 남은 시도 : ${tries}회`;
+    this.#playerSection.querySelector(".tries-count").textContent = `${tries}`;
   }
 
   renderResult(gameData) {
@@ -68,7 +66,7 @@ class GameView {
     const strikeContainer = document.querySelector(".strike-container");
     strikeContainer.insertAdjacentHTML(
       "beforeend",
-      '<span class="strike-count count">O</span>'
+      '<span class="strike-count count"></span>'
     );
   }
 
@@ -76,7 +74,7 @@ class GameView {
     const ballContainer = document.querySelector(".ball-container");
     ballContainer.insertAdjacentHTML(
       "beforeend",
-      '<span class="ball-count count">X</span>'
+      '<span class="ball-count count"></span>'
     );
   }
 

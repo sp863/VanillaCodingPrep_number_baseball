@@ -25,40 +25,46 @@
       <div class="myInfo">
         <p class="info-name">박세진</p>
         <p class="info-name">Sejin Scott Park</p>
-        <a class="cell info-link" href="tel:010-8081-0146">010-8081-0146</a
-        ><br />
+        <a class="cell info-link" href="tel:010-8081-0146">010-8081-0146</a>
         <a class="email info-link" href="mailto:sp863@cornell.edu"
           >sp863@cornell.edu</a
         >
       </div>
     </div>
-
-    <div class="game-page">
-      <div id="header-section">
-        <h1 class="game-result-message"></h1>
-        <button class="restart-btn btn">🌀 RESTART</button>
-        <p class="instruction"></p>
-      </div>
-
-      <div id="game-info-section">
-        <div class="number">?</div>
-        <div class="strike-container">
-          <p class="strike">Strike :</p>
-          <!-- <span class="strike-count count">O</span> -->
+    <div class="game-page-container">
+      <div class="game-page">
+        <div id="header-section">
+          <h1 class="game-result-message"></h1>
+          <button class="restart-btn btn">🌀 RESTART</button>
         </div>
-        <div class="ball-container">
-          <p class="ball">Ball :</p>
-          <!-- <span class="ball-count count">X</span> -->
-        </div>
-      </div>
 
-      <div id="player-control-section">
-        <div class="left-control-container">
-          <input class="player-guess" />
-          <button class="enter btn">✅ ENTER</button>
+        <div id="game-info-section">
+          <div class="number-container">
+            <p class="number">?</p>
+          </div>
+          <div class="strike-container">
+            <p class="strike">Strike :</p>
+            <!-- <span class="strike-count count"></span>
+            <span class="strike-count count"></span>
+            <span class="strike-count count"></span> -->
+          </div>
+          <div class="ball-container">
+            <p class="ball">Ball :</p>
+            <!-- <span class="ball-count count"></span>
+            <span class="ball-count count"></span>
+            <span class="ball-count count"></span> -->
+          </div>
         </div>
-        <div class="right-control-container">
-          <p class="tries">남은 시도: 10회</p>
+
+        <div id="player-control-section">
+          <div class="left-control-container">
+            <input placeholder="숫자 입력" class="player-guess" />
+            <button class="enter btn">ENTER</button>
+          </div>
+          <div class="right-control-container">
+            <p class="tries-title">🥊 남은 시도</p>
+            <p class="tries-count"></p>
+          </div>
         </div>
       </div>
     </div>

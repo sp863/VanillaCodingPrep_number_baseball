@@ -11,27 +11,31 @@ html {
 
 body {
   font-family: "Rubik", sans-serif;
-  background-image: linear-gradient(to top left, #b2f2bb 0%, #12b886 100%);
+  background-image: linear-gradient(to top left, #adb5bd 0%, #ced4da 100%);
   height: 100vh;
   color: #333;
+  overflow-x: hidden;
 }
 
+/* /////////////////////////////////////////////////////////// */
+/* START PAGE */
 .start-page {
-  background-color: rgba(255, 255, 255, 0.342);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
   transform: translateX(100%);
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10rem;
   justify-content: center;
-  transition: all 0.5s ease-in;
+
+  backdrop-filter: blur(10px);
+  gap: 9rem;
+  transition: all 1s ease-in;
+
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
@@ -40,12 +44,225 @@ body {
 .start-page--title {
   font-family: "Press Start 2P", cursive;
   font-size: 5rem;
+  letter-spacing: 1rem;
+}
+
+.game-start-btn {
+  font-family: "Press Start 2P", cursive;
+  color: #ffffff;
+  letter-spacing: 0.3rem;
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  pointer-events: auto;
+
+  background-color: #444;
+  padding: 2.5rem 3.5rem 2rem 1.5rem;
+  border-radius: 50rem;
+  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.2);
+}
+.game-start-btn:active {
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+  color: #c92a2a;
+  transform: translateY(2rem);
+  transition: all 0.4s;
+}
+
+.myInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  gap: 15rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 8rem;
+  background-color: #ced4da;
+  border-top: 1px solid #adb5bd;
+}
+.info-name {
+  font-size: 1.8rem;
+  color: #767676;
+}
+
+.info-link:link,
+.info-link:visited {
+  text-decoration: none;
+  font-size: 1.8rem;
+  color: #767676;
+  transition: all 0.3;
+  pointer-events: auto;
+}
+
+.info-link:hover,
+.info-link:active {
+  color: #555;
+}
+
+/* /////////////////////////////////////////////////////////// */
+/* GAME PAGE */
+.game-page-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+.game-page {
+  display: grid;
+  grid-template-rows: 1fr 8fr 4fr;
+  padding: 5rem;
+
+  width: 100rem;
+  height: 80rem;
+  justify-content: center;
+  background-color: #ffffff;
+  filter: blur();
+  backdrop-filter: blur(200px);
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+#header-section {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  padding: 0rem 0rem 2rem 0rem;
+  width: 60rem;
+  /* height: */
+  position: relative;
+}
+.game-result-message {
+  font-weight: 700;
+  font-size: 8rem;
+}
+
+#game-info-section {
+  display: grid;
+  grid-template-rows: 4fr 1fr 1fr;
+  width: 60rem;
+  height: 100%;
+}
+.number-container {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+.number {
+  font-family: "Press Start 2P", cursive;
+  font-size: 12rem;
+}
+.strike-container,
+.ball-container {
+  display: grid;
+  grid-template-columns: 3fr 1.5fr 1.5fr 1.5fr;
+  align-items: center;
+  justify-items: center;
+  column-gap: 4rem;
+  border-top: 2px solid #444;
+  border-left: 2px solid #444;
+  border-right: 2px solid #444;
+}
+
+.strike-container {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.ball-container {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom: 2px solid #444;
+}
+
+.strike,
+.ball {
+  font-size: 3rem;
+  padding: 0rem 2rem 0rem 0.3rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  justify-self: flex-end;
+}
+
+.count {
+  width: 4rem;
+  height: 4rem;
+  padding: 2rem 2rem;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+.strike-count {
+  background-color: #12b886;
+}
+.ball-count {
+  background-color: #fa5252;
+}
+
+#player-control-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: center;
+  justify-content: center;
+  column-gap: 8rem;
+}
+
+.left-control-container,
+.right-control-container {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 1rem;
+  align-items: center;
+  justify-items: center;
+  height: 100%;
+}
+
+.player-guess {
+  width: 23rem;
+  height: 6rem;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  border-radius: 20px;
+  padding: 2rem;
+  font-size: 2rem;
+  font-family: inherit;
+  color: inherit;
+  border: 2px solid #444;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.player-guess::placeholder {
+  color: #aaa;
+}
+
+.player-guess *:focus {
+  outline: none;
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0 2px 5px #ced4da;
+}
+
+.player-guess:hover {
+  outline: none;
+  box-shadow: 0 2px 9px #ced4da;
+}
+
+.tries-title {
+  font-size: 4rem;
+  letter-spacing: 0.2rem;
+}
+.tries-count {
+  font-size: 3rem;
+  font-family: "Press Start 2P", cursive;
 }
 
 .btn {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   color: #444;
   background: none;
   border: none;
@@ -56,31 +273,24 @@ body {
   font-weight: 400;
   transition: all 0.2s;
 
-  background-color: white;
-  background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px);
-
-  padding: 0.7rem 2.5rem;
+  padding: 1rem 3rem;
   border-radius: 50rem;
   box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
 }
 
-.btn:active {
-  transform: translate(-50%, 3px);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+.enter {
+  background-color: #69db7c;
+  padding: 1rem 5rem;
 }
 
-.game-start-btn {
-  font-family: "Press Start 2P", cursive;
-  color: #333;
-  background: none;
-  border: none;
-  font-size: 2.5rem;
-  cursor: pointer;
-  transition: all 0.2s;
+.restart-btn {
+  position: absolute;
+  top: -30%;
+  left: -30%;
 }
-.game-start-btn:active {
-  transform: translate(-50%, 3px);
+
+.btn:active {
+  transform: translateY(1rem);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
 }
 
@@ -88,9 +298,8 @@ body {
   outline: none;
 }
 
-.game-page {
-  opacity: 0;
-}
+/* /////////////////////////////////////////////////////////// */
+/* Event handling */
 
 .open.start-page {
   opacity: 1;
@@ -99,12 +308,14 @@ body {
   transform: translateX(0);
 }
 
-.open.game-page {
+.open.game-page-container {
   opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
 }
 
 .three-strikes {
-  background-color: green;
+  background-image: linear-gradient(to top left, #b2f2bb 0%, #12b886 100%);
 }
 
 .game-over {
