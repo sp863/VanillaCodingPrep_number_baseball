@@ -24,8 +24,9 @@ export const isValidNumber = function (number) {
     notContainZero &&
     notContainDot &&
     notContainSpace
-  )
+  ) {
     return true;
+  }
   return false;
 };
 
