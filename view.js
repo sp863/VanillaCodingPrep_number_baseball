@@ -81,6 +81,7 @@ class GameView {
   clearResult() {
     this.clearStrikeContainer();
     this.clearBallContainer();
+    this.#playerSection.querySelector(".player-guess").value = "";
   }
 
   clearStrikeContainer() {

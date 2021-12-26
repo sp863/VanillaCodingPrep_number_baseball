@@ -16,7 +16,8 @@ export const isValidNumber = function (number) {
   const isNumber = Number(number);
   const noDuplicate = checkNumberSet.size === 3;
   const notContainZero = !number.includes("0");
-  if (isNumber && noDuplicate && notContainZero) return true;
+  const notContainDot = !number.includes(".");
+  if (isNumber && noDuplicate && notContainZero && notContainDot) return true;
   return false;
 };
 

@@ -12,7 +12,7 @@ const controlGame = function (guess) {
   const answer = model.gameData.answer;
   if (!model.isValidNumber(guess)) {
     alert(
-      "입력숫자는 1에서 9까지의 서로 다른 3자리 숫자이어야 하며 0은 사용하지 않습니다."
+      "입력숫자는 1에서 9까지의 서로 다른 3자리 자연수여야 하며 0은 사용하지 않습니다."
     );
     gameView.clearResult();
     return;
