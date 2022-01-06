@@ -143,6 +143,7 @@ body {
 .game-result-message {
   font-weight: 700;
   font-size: 7rem;
+  height: 10rem;
 }
 
 #game-info-section {
@@ -285,6 +286,7 @@ body {
 
 .restart-btn {
   position: absolute;
+  font-size: 2.5rem;
   top: -30%;
   left: -30%;
 }
